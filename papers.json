@@ -1,0 +1,36 @@
+[
+    {
+        "title": "Multi-Agent_paper1",
+        "authors": [
+            "Sandip Sen",
+            "Tim Flavin",
+            "Ethan Beaird"
+        ],
+        "date": "mm-dd-yyyy",
+        "publisher": "AAMAS",
+        "url": "https://www.example.com",
+        "abstract": "This is a test paper about multi-agent systems."
+    },
+    {
+        "title": "Multi-Agent_paper2",
+        "authors": [
+            "John Doe",
+            "Jane Smith"
+        ],
+        "date": "mm-dd-yyyy",
+        "publisher": "NEURIPS",
+        "url": "https://www.example.com",
+        "abstract": "This is another test paper about multi-agent systems."
+    },
+    {
+        "title": "Multi-Agent_paper3",
+        "authors": [
+            "Alice Johnson",
+            "Bob Brown"
+        ],
+        "date": "mm-dd-yyyy",
+        "publisher": "ICML",
+        "url": "https://www.example.com",
+        "abstract": "This is yet another test paper about multi-agent systems."
+    }
+]
