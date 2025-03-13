@@ -71,21 +71,71 @@ let transform_publications = function (data) {
     return publications
 }
 
+let transform_members = function (data) {
+    return data
+}
+
+let transform_students = function (data) {
+    students = []
+    types = ['Undergrad', 'Ph.D.', 'Alumni']
+    console.log(data)
+    for (let i in data) {
+        student = data[i]
+        console.log(student)
+        if (student.MembershipStatus >= 3) {
+            continue
+        }
+        let student_data = {
+            name: student.FirstName + " " + student.LastName,
+            photo: student.Photo,
+            website: student.Website,
+            email: student.Email,
+            bio: student.Bio,
+            type: types[student.MembershipStatus],
+            isExpanded: false,
+        }
+        students.push(student_data)
+    }
+    console.log(students)
+    return students
+}
+
 app.get('/', (req, res) => {
     res.send("hi there!")
 })
 
-// app.get('/publications/', (req, res) => {
-//     connection.query('SELECT * FROM publications', (error, results) => {
-//         if (error) throw error
-//         //console.log(results)
-//         res.send({ body: transform_publications(results) })
-//     })
-// })
+app.get('/publications/', (req, res) => {
+    connection.query('SELECT * FROM publications', (error, results) => {
+        if (error) throw error
+        //console.log(results)
+        res.send({ body: transform_publications(results) })
+    })
+})
 
-// app.get('/members/', (req, res) => {
+app.get('/members/', (req, res) => {
+    connection.query('SELECT * FROM labmembers', (error, results) => {
+        if (error) throw error
+        //console.log(results)
+        res.send({ body: transform_members(results) })
+    })
+})
 
-//     app.listen(port, () => {
-//         console.log(`Example app listening on port ${port}`)
-//     })
-// })
+app.get('/projects/', (req, res) => {
+    connection.query('SELECT * FROM projects', (error, results) => {
+        if (error) throw error
+        //console.log(results)
+        res.send({ body: results })
+    })
+})
+
+app.get('/students/', (req, res) => {
+    connection.query('SELECT * FROM labmembers', (error, results) => {
+        if (error) throw error
+        //console.log(results)
+        res.send({ body: transform_students(results) })
+    })
+})
+
+app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`)
+})
